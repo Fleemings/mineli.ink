@@ -1,0 +1,26 @@
+{
+  "name": "@mineli-ink/root",
+  "version": "1.0.0",
+  "description": "Mineli.ink - Monorepo Application",
+  "private": true,
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspaces",
+    "build": "npm run build --workspaces",
+    "start": "npm start --workspaces",
+    "test": "npm test --workspaces",
+    "lint": "npm run lint --workspaces",
+    "docker:up": "docker compose up",
+    "docker:down": "docker compose down",
+    "docker:build": "docker compose build",
+    "docker:logs": "docker compose logs -f",
+    "docker:dev": "docker compose up -d && npm run docker:logs",
+    "docker:prod": "docker compose -f docker-compose.prod.yml up -d",
+    "setup": "npm install && npm run docker:build"
+  },
+  "devDependencies": {}
+}
+

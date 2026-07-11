@@ -1,0 +1,15 @@
+{
+  "printWidth": 100,
+  "singleQuote": true,
+  "trailingComma": "none",
+  "overrides": [
+    {
+      "files": ["**/i18n/**.json"],
+      "options": {
+        "parser": "angular",
+        "plugins": ["prettier-plugin-sort-json"],
+        "jsonRecursiveSort": true
+      }
+    }
+  ]
+}

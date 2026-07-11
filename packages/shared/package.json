@@ -1,0 +1,11 @@
+{
+  "name": "@mineli-ink/shared",
+  "version": "1.0.0",
+  "description": "Shared types, utilities and config",
+  "main": "index.ts",
+  "scripts": {
+    "build": "tsc"
+  },
+  "private": true
+}
+
