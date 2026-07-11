@@ -8,19 +8,16 @@
     "packages/*"
   ],
   "scripts": {
-    "dev": "npm run dev --workspaces",
-    "build": "npm run build --workspaces",
-    "start": "npm start --workspaces",
-    "test": "npm test --workspaces",
-    "lint": "npm run lint --workspaces",
+    "dev": "npm run dev --workspaces --if-present",
+    "build": "npm run build --workspaces --if-present",
+    "start": "npm start --workspaces --if-present",
+    "test": "npm test --workspaces --if-present",
+    "lint": "npm run lint --workspaces --if-present",
     "docker:up": "docker compose up",
     "docker:down": "docker compose down",
     "docker:build": "docker compose build",
     "docker:logs": "docker compose logs -f",
-    "docker:dev": "docker compose up -d && npm run docker:logs",
-    "docker:prod": "docker compose -f docker-compose.prod.yml up -d",
-    "setup": "npm install && npm run docker:build"
+    "setup": "npm install && docker compose build"
   },
   "devDependencies": {}
 }
-
