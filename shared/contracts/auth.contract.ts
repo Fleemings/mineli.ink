@@ -23,7 +23,7 @@ export const loginSchema = z.object({
     .toLowerCase(),
   password: z
     .string({ error: ERROR_MESSAGES.PASSWORD_REQUIRED })
-    .min(1, ERROR_MESSAGES.PASSWORD_REQUIRED),
+    .min(10, ERROR_MESSAGES.PASSWORD_REQUIRED),
 });
 
 export const googleLoginSchema = z.object({
@@ -33,11 +33,14 @@ export const googleLoginSchema = z.object({
 });
 
 export const authUserSchema = z.object({
-  id: z.string().min(1),
   name: z.string().min(1),
-  email: z.email(),
-  language: z.string().min(1),
-  createdAt: z.union([z.string(), z.date()]),
+  email: z
+    .email(ERROR_MESSAGES.EMAIL_INVALID)
+    .trim()
+    .toLowerCase(),
+  password: z
+      .string({ error: ERROR_MESSAGES.PASSWORD_REQUIRED })
+      .min(8, ERROR_MESSAGES.PASSWORD_MIN_LENGTH),
 });
 
 export const authPayloadSchema = z.object({

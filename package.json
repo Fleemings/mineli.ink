@@ -4,8 +4,7 @@
   "description": "Mineli.ink - Monorepo Application",
   "private": true,
   "workspaces": [
-    "apps/*",
-    "packages/*"
+    "apps/*"
   ],
   "scripts": {
     "dev": "npm run dev --workspaces --if-present",

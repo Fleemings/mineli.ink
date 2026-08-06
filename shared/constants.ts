@@ -1,19 +1,8 @@
-// Shared constants between frontend and backend
-
-export const API_VERSION = 'v1';
-export const API_BASE_PATH = '/api';
-
-// Common timeouts
-export const DEFAULT_API_TIMEOUT = 30000; // 30 seconds
-export const DEFAULT_POOL_TIMEOUT = 5000; // 5 seconds
-
-// Environment names
 export const ENVIRONMENTS = {
   DEVELOPMENT: 'development',
   PRODUCTION: 'production',
 } as const;
 
-// HTTP status codes
 export const HTTP_STATUS = {
   OK: 200,
   CREATED: 201,
@@ -26,7 +15,6 @@ export const HTTP_STATUS = {
   SERVICE_UNAVAILABLE: 503,
 } as const;
 
-// Error messages
 export const ERROR_MESSAGES = {
   EMAIL_ALREADY_REGISTERED: 'This email is already registered',
   INVALID_CREDENTIALS: 'Invalid credentials',
