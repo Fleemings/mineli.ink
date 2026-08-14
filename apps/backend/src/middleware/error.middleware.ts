@@ -13,7 +13,9 @@ export function validate(schema: z.ZodType) {
             }));
             throw new ValidationFailedError(errors);
         }
-        req.body = result.data;
-        next();
+        if(result.success){
+            req.body = result.data;
+            next();
+        }
     };
 }

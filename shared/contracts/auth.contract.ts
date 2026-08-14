@@ -22,8 +22,7 @@ export const loginSchema = z.object({
     .trim()
     .toLowerCase(),
   password: z
-    .string({ error: ERROR_MESSAGES.PASSWORD_REQUIRED })
-    .min(10, ERROR_MESSAGES.PASSWORD_REQUIRED),
+    .string({ error: ERROR_MESSAGES.INVALID_CREDENTIALS })
 });
 
 export const googleLoginSchema = z.object({

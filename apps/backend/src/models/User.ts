@@ -7,7 +7,7 @@ const userSchema = new mongoose.Schema(
     {
         name: { type: String, required: true, trim: true },
         email: { type: String, required: true, unique: true, lowercase: true },
-        password: { type: String, default: null },
+        password: { type: String, required: true },
         googleId: { type: String, default: null },
         language: { type: String, enum: Object.values(LanguageEnum), default: LanguageEnum.PT, required: true },
         pronoun: { type: String, enum: Object.values(PronounEnum), default: null },
