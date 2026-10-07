@@ -1,43 +1,50 @@
+# LOCAL / DEV-ONLY STACK: postgres + backend, for running/testing the backend API
+#
+# To run the frontend locally, use `cd apps/frontend && npm start` (ng serve) instead -
+# it talks to this backend at http://localhost:3000/api.
 services:
-  mongodb:
-    image: mongo:7
-    container_name: mineli-mongodb
+  postgres:
+    image: postgres:16-alpine
+    container_name: mineli-postgres
     restart: unless-stopped
     environment:
-      MONGO_DATABASE: mineli_ink
-      MONGO_USERNAME: ${MONGO_USER}
-      MONGO_PASSWORD: ${MONGO_PASSWORD}
+      POSTGRES_DB: ${POSTGRES_DB:-mineli_ink}
+      POSTGRES_USER: ${POSTGRES_USER:-postgres}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    ports:
+      - "5432:5432"
     volumes:
-      - mongodb_data:/data/db
+      - postgres_data:/var/lib/postgresql/data
     healthcheck:
-      test: echo 'db.runCommand("ping").ok' | mongosh localhost:27017/test --quiet
+      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER:-postgres} -d ${POSTGRES_DB:-mineli_ink}"]
       interval: 10s
       timeout: 5s
       retries: 5
-    command: mongod --auth
 
   backend:
-    build: ./apps/backend
+    build:
+      context: .
+      dockerfile: apps/backend/Dockerfile
     container_name: mineli-backend
     restart: unless-stopped
+    ports:
+      - "3000:3000"
     environment:
       NODE_ENV: production
       PORT: 3000
-      MONGODB_URI: mongodb://${MONGO_USER}:${MONGO_PASSWORD}@mongodb:27017/mineli_ink?authSource=admin
+      DATABASE_URL: postgresql://${POSTGRES_USER:-postgres}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB:-mineli_ink}?schema=public
       JWT_SECRET: ${JWT_SECRET}
-      CORS_ORIGIN: http://localhost
+      JWT_EXPIRATION: ${JWT_EXPIRATION:-7d}
+      GOOGLE_CLIENT_ID: ${GOOGLE_CLIENT_ID:-placeholder-client-id}
+      CORS_ORIGIN: ${CORS_ORIGIN:-http://localhost:4200}
+      BCRYPT_ROUNDS: ${BCRYPT_ROUNDS:-10}
+      RESEND_API_KEY: ${RESEND_API_KEY:-}
+      RESEND_FROM_EMAIL: ${RESEND_FROM_EMAIL:-onboarding@resend.dev}
+      BOOKING_FORWARD_TO_EMAIL: ${BOOKING_FORWARD_TO_EMAIL:-}
+      FLASH_REQUEST_FORWARD_TO_EMAIL: ${FLASH_REQUEST_FORWARD_TO_EMAIL:-}
     depends_on:
-      mongodb:
+      postgres:
         condition: service_healthy
 
-  frontend:
-    build: ./apps/frontend
-    container_name: mineli-frontend
-    restart: unless-stopped
-    ports:
-      - "80:80"
-    depends_on:
-      - backend
-
 volumes:
-  mongodb_data:
+  postgres_data:

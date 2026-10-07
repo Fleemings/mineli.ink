@@ -1,0 +1,226 @@
+name: CI/CD
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+
+  pull_request:
+    branches:
+      - main
+      - develop
+
+  workflow_dispatch:
+    inputs:
+      environment:
+        description: Target environment
+        required: true
+        type: choice
+        options:
+          - dev
+          - prod
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+
+  # ---------------------------------------------------------
+  # Resolve target environment
+  # ---------------------------------------------------------
+
+  resolve-environment:
+    if: github.event_name != 'pull_request'
+    runs-on: ubuntu-latest
+
+    outputs:
+      environment: ${{ steps.resolve.outputs.environment }}
+      gh_environment: ${{ steps.resolve.outputs.gh_environment }}
+      angular_configuration: ${{ steps.resolve.outputs.angular_configuration }}
+      do_spec_file: ${{ steps.resolve.outputs.do_spec_file }}
+      cloudflare_environment: ${{ steps.resolve.outputs.cloudflare_environment }}
+
+    steps:
+      - id: resolve
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ]; then
+            ENVIRONMENT="${{ inputs.environment }}"
+          elif [ "${{ github.ref }}" = "refs/heads/main" ]; then
+            ENVIRONMENT="prod"
+          else
+            ENVIRONMENT="dev"
+          fi
+
+          if [ "$ENVIRONMENT" = "prod" ]; then
+            echo "gh_environment=production" >> "$GITHUB_OUTPUT"
+            echo "angular_configuration=production" >> "$GITHUB_OUTPUT"
+            echo "do_spec_file=.do/app.prod.yaml" >> "$GITHUB_OUTPUT"
+            echo "cloudflare_environment=" >> "$GITHUB_OUTPUT"
+          else
+            echo "gh_environment=development" >> "$GITHUB_OUTPUT"
+            echo "angular_configuration=staging" >> "$GITHUB_OUTPUT"
+            echo "do_spec_file=.do/app.dev.yaml" >> "$GITHUB_OUTPUT"
+            echo "cloudflare_environment=dev" >> "$GITHUB_OUTPUT"
+          fi
+
+          echo "environment=$ENVIRONMENT" >> "$GITHUB_OUTPUT"
+
+  # ---------------------------------------------------------
+  # Backend CI
+  # ---------------------------------------------------------
+
+  test-backend:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build backend
+        run: npm run build --workspace @mineli-ink/backend
+
+      - name: Test backend
+        run: npm test --workspace @mineli-ink/backend
+
+  # ---------------------------------------------------------
+  # Frontend CI
+  # ---------------------------------------------------------
+
+  test-frontend:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Lint frontend
+        run: npm run lint --workspace @mineli-ink/frontend
+
+      - name: Test frontend
+        run: npm test --workspace @mineli-ink/frontend -- --watch=false
+
+      - name: Verify production build
+        run: >
+          npm run build
+          --workspace @mineli-ink/frontend
+          --
+          --configuration production
+
+  # ---------------------------------------------------------
+  # Cloudflare deployment
+  # ---------------------------------------------------------
+
+  deploy-frontend:
+    if: github.event_name != 'pull_request'
+
+    needs:
+      - resolve-environment
+      - test-frontend
+
+    runs-on: ubuntu-latest
+
+    environment:
+      name: ${{ needs.resolve-environment.outputs.gh_environment }}
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build frontend
+        run: >
+          npm run build
+          --workspace @mineli-ink/frontend
+          --
+          --configuration
+          ${{ needs.resolve-environment.outputs.angular_configuration }}
+
+      - name: Deploy frontend to Cloudflare
+        working-directory: apps/frontend
+
+        env:
+          CLOUDFLARE_API_TOKEN: ${{ secrets.CLOUDFLARE_API_TOKEN }}
+          CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CLOUDFLARE_ACCOUNT_ID }}
+          CLOUDFLARE_ENV: ${{ needs.resolve-environment.outputs.cloudflare_environment }}
+
+        run: |
+          set -euo pipefail
+
+          if [ "${{ needs.resolve-environment.outputs.environment }}" = "prod" ]; then
+            npx wrangler deploy
+          else
+            npx wrangler deploy --env dev
+          fi
+
+  # ---------------------------------------------------------
+  # DigitalOcean deployment
+  # ---------------------------------------------------------
+
+#  deploy-backend:
+#    if: github.event_name != 'pull_request'
+#
+#    needs:
+#      - resolve-environment
+#      - test-backend
+#
+#    runs-on: ubuntu-latest
+#
+#    environment:
+#      name: ${{ needs.resolve-environment.outputs.gh_environment }}
+#
+#    steps:
+#      - name: Checkout
+#        uses: actions/checkout@v4
+#
+#      - name: Install doctl
+#        uses: digitalocean/action-doctl@v2
+#        with:
+#          token: ${{ secrets.DIGITALOCEAN_ACCESS_TOKEN }}
+#
+#      - name: Validate DigitalOcean App Spec
+#        run: |
+#          doctl apps spec validate \
+#            "${{ needs.resolve-environment.outputs.do_spec_file }}"
+
+#      - name: Deploy backend to DigitalOcean
+#        run: |
+#          set -euo pipefail
+#
+#          doctl apps update "${{ secrets.DO_APP_ID }}" \
+#            --spec "${{ needs.resolve-environment.outputs.do_spec_file }}" \
+#            --update-sources \
+#            --wait

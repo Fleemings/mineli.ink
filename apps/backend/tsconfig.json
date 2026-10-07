@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "target": "ES2024",
+    "module": "Node26",
+    "lib": ["ES2024"],
+    "types": ["node"],
+    "rootDir": "../..",
+    "outDir": "./dist",
+    "strict": true,
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "resolveJsonModule": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "noEmitOnError": true,
+    "sourceMap": true,
+    "paths": {
+      "@shared/*": ["../../shared/*"],
+      "@shared": ["../../shared/index.ts"]
+    }
+  },
+  "include": ["src/**/*.ts", "../../shared/**/*.ts"],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "**/*.test.ts"
+  ]
+}
