@@ -1,0 +1,12 @@
+<div class="language">
+  @for (option of localeOptions; track option.value) {
+    <button
+      type="button"
+      class="language__option"
+      [class.language__option--active]="selectedLocale() === option.value"
+      (click)="onLocaleSelect(option.value)"
+    >
+      {{ option.code }}
+    </button>
+  }
+</div>

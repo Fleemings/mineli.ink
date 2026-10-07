@@ -56,7 +56,8 @@ export default [
   },
   // Angular template files (component templates only)
   {
-    files: ["**/*.component.html"],
+    files: ["**/*.html"],
+    ignores: ["src/index.html"],
     languageOptions: {
       parser: angularTemplateParser,
     },
