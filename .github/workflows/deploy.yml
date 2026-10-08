@@ -184,9 +184,9 @@ jobs:
           set -euo pipefail
 
           if [ "${{ needs.resolve-environment.outputs.environment }}" = "prod" ]; then
-            npx wrangler deploy
+            npx --no-install wrangler deploy
           else
-            npx wrangler deploy --env dev
+            npx --no-install wrangler deploy --env dev
           fi
 
   # ---------------------------------------------------------
