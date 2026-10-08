@@ -3,7 +3,6 @@ import globals from "globals";
 import tseslint from "typescript-eslint";
 import angularPlugin from "@angular-eslint/eslint-plugin";
 import angularTemplatePlugin from "@angular-eslint/eslint-plugin-template";
-import nxPlugin from "@nx/eslint-plugin";
 import unusedImportsPlugin from "eslint-plugin-unused-imports";
 import angularTemplateParser from "@angular-eslint/template-parser";
 
@@ -27,24 +26,10 @@ export default [
     },
     plugins: {
       "@typescript-eslint": tseslint.plugin,
-      "@nx": nxPlugin,
       "unused-imports": unusedImportsPlugin,
       "@angular-eslint": angularPlugin,
     },
     rules: {
-      "@nx/enforce-module-boundaries": [
-        "error",
-        {
-          enforceBuildableLibDependency: true,
-          allow: ["@frontend/**"],
-          depConstraints: [
-            {
-              sourceTag: "*",
-              onlyDependOnLibsWithTags: ["*"],
-            },
-          ],
-        },
-      ],
       "@typescript-eslint/no-explicit-any": "off",
       "@typescript-eslint/no-unused-vars": "off",
       "@typescript-eslint/ban-ts-comment": "off",

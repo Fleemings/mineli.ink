@@ -1,0 +1,16 @@
+<button
+  type="button"
+  class="theme-mode__button btn btn-outline-secondary"
+  [attr.aria-label]="
+    themeService.theme() === 'dark'
+      ? ('themeMode.actions.switchToLight' | translate)
+      : ('themeMode.actions.switchToDark' | translate)
+  "
+  (click)="themeService.toggleTheme()"
+>
+  @if (themeService.theme() === 'dark') {
+    <i class="bi bi-sun-fill" aria-hidden="true"></i>
+  } @else {
+    <i class="bi bi-moon-stars-fill" aria-hidden="true"></i>
+  }
+</button>

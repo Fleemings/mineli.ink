@@ -2,7 +2,11 @@ import { DOCUMENT, registerLocaleData } from '@angular/common';
 import localeEnGb from '@angular/common/locales/en-GB';
 import localeEsMx from '@angular/common/locales/es-MX';
 import localePtBr from '@angular/common/locales/pt';
-import { Injectable, computed, inject, signal } from '@angular/core';
+import { Injectable, inject, signal } from '@angular/core';
+
+import enGB from '../../assets/i18n/en-GB.json';
+import esMX from '../../assets/i18n/es-MX.json';
+import ptBR from '../../assets/i18n/pt-BR.json';
 
 type TranslationDictionary = Record<string, unknown>;
 
@@ -19,10 +23,12 @@ const LOCALE_BY_LANGUAGE: Readonly<Record<string, Locale>> = {
   en: 'en-GB'
 };
 
-const TRANSLATION_LOADERS: Readonly<Record<Locale, () => Promise<TranslationDictionary>>> = {
-  'pt-BR': async () => (await import('../../assets/i18n/pt-BR.json')).default as TranslationDictionary,
-  'es-MX': async () => (await import('../../assets/i18n/es-MX.json')).default as TranslationDictionary,
-  'en-GB': async () => (await import('../../assets/i18n/en-GB.json')).default as TranslationDictionary
+// All three locale catalogs are tiny (a few KB each), so they're bundled directly
+// instead of lazily loaded — no async loading state (and no APP_INITIALIZER) needed.
+const TRANSLATIONS: Readonly<Record<Locale, TranslationDictionary>> = {
+  'pt-BR': ptBR,
+  'es-MX': esMX,
+  'en-GB': enGB
 };
 
 @Injectable({
@@ -31,7 +37,6 @@ const TRANSLATION_LOADERS: Readonly<Record<Locale, () => Promise<TranslationDict
 export class I18nService {
   private readonly document = inject(DOCUMENT);
   private readonly currentLocale = signal<Locale>(this.resolvePreferredLocale());
-  private readonly translationsByLocale = signal<Partial<Record<Locale, TranslationDictionary>>>({});
 
   readonly locale = this.currentLocale.asReadonly();
 
@@ -41,23 +46,25 @@ export class I18nService {
     this.persistLocale(this.currentLocale());
   }
 
-  async initialize(): Promise<void> {
-    await Promise.all([this.ensureLocaleLoaded(this.currentLocale()), this.ensureLocaleLoaded(DEFAULT_LOCALE)]);
-  }
-
-  async setLocale(locale: Locale): Promise<void> {
-    await this.ensureLocaleLoaded(locale);
+  setLocale(locale: Locale): void {
     this.currentLocale.set(locale);
     this.updateDocumentLanguage(locale);
     this.persistLocale(locale);
   }
 
   translate(key: string, params?: Record<string, string | number>): string {
-    const locale = this.currentLocale();
-    const activeValue = this.resolveNestedValue(this.translationsByLocale()[locale], key);
-    const fallbackValue = this.resolveNestedValue(this.translationsByLocale()[DEFAULT_LOCALE], key);
-    const text = typeof activeValue === 'string' ? activeValue : typeof fallbackValue === 'string' ? fallbackValue : key;
+    const activeValue = this.resolveNestedValue(TRANSLATIONS[this.currentLocale()], key);
+    const text = this.resolveText(activeValue, key);
     return this.applyParams(text, params);
+  }
+
+  private resolveText(activeValue: unknown, key: string): string {
+    if (typeof activeValue === 'string') {
+      return activeValue;
+    }
+
+    const fallbackValue = this.resolveNestedValue(TRANSLATIONS[DEFAULT_LOCALE], key);
+    return typeof fallbackValue === 'string' ? fallbackValue : key;
   }
 
   private resolvePreferredLocale(): Locale {
@@ -80,15 +87,6 @@ export class I18nService {
     return DEFAULT_LOCALE;
   }
 
-  private async ensureLocaleLoaded(locale: Locale): Promise<void> {
-    if (this.translationsByLocale()[locale]) {
-      return;
-    }
-
-    const dictionary = await TRANSLATION_LOADERS[locale]();
-    this.translationsByLocale.update((current) => ({ ...current, [locale]: dictionary }));
-  }
-
   private normalizeLocale(input: string): Locale | null {
     const normalized = input.trim().toLowerCase();
     if (!normalized) {
@@ -104,7 +102,7 @@ export class I18nService {
     return LOCALE_BY_LANGUAGE[language] ?? null;
   }
 
-  private resolveNestedValue(dictionary: TranslationDictionary | undefined, dottedKey: string): unknown {
+  private resolveNestedValue(dictionary: TranslationDictionary, dottedKey: string): unknown {
     return dottedKey.split('.').reduce<unknown>((accumulator, keyPart) => {
       if (typeof accumulator !== 'object' || accumulator === null) {
         return undefined;
@@ -118,7 +116,7 @@ export class I18nService {
       return template;
     }
 
-    return template.replace(/\{([a-zA-Z0-9_]+)}/g, (_, token: string) => {
+    return template.replace(/\{(\w+)}/g, (_, token: string) => {
       const value = params[token];
       return value === undefined ? `{${token}}` : String(value);
     });

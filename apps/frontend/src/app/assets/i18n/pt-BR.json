@@ -1,242 +1,223 @@
 {
-  "header": {
-    "logoAlt": "Logo da Mineli",
-    "brandName": "Mineli",
-    "nav": {
-      "landing": "Início",
-      "booking": "Orçamento",
-      "skinCare": "Cuidados",
-      "faq": "Perguntas",
-      "store": "Loja",
-      "open": "Abrir menu",
-      "close": "Fechar menu",
-      "flashes": "Flashes"
-    }
-  },
-  "themeMode": {
-    "actions": {
-      "switchToLight": "Modo claro",
-      "switchToDark": "Modo escuro"
-    }
-  },
-  "language": {
-    "label": "Idioma",
-    "options": {
-      "portuguese": "Português",
-      "spanish": "Espanhol",
-      "english": "Inglês"
-    }
-  },
-  "landingArea": {
-    "branding": {
-      "titleLineOne": "Mineli",
-      "titleLineTwo": "Silva",
-      "tagline": "Arte que se move com você",
-      "cta": "Solicitar Orçamento"
-    }
-  },
   "booking": {
-    "page": {
-      "title": "Orçamento",
-      "description": "Preencha cada etapa para enviar sua solicitação de orçamento de tatuagem."
-    },
     "form": {
-      "sections": {
-        "aboutYou": "Para te conhecer melhor",
-        "futureTattoo": "Para planejar sua futura tatuagem",
-        "details": "Vamos entrar nos detalhes",
-        "availability": "Para conhecer sua disponibilidade"
-      },
-      "fields": {
-        "name": "Nome",
-        "email": "E-mail",
-        "placement": "Local do corpo",
-        "approximateSize": "Tamanho aproximado",
-        "referenceImages": "Imagens de referência para seu projeto",
-        "likedWorkReason": "Me fale o que você gostou dessas referências",
-        "placementPhoto": "Foto da área do seu corpo a ser tatuado",
-        "availability": "Data preferida / disponibilidade"
-      },
-      "placeholders": {
-        "name": "Seu nome",
-        "email": "Seu e-mail",
-        "placement": "Antebraço interno, Coxa frente, Costas",
-        "likedWorkReason": "Quais elementos são essenciais?",
-        "placementPhoto": "Circule o local na imagem",
-        "availability": "Selecione uma terça-feira ou sexta-feira"
-      },
-      "options": {
-        "select": "Selecionar",
-        "unsure": "Ainda não tenho certeza",
-        "approximateSize": {
-          "oneToThree": "1–3 cm",
-          "fourToSix": "4–6 cm",
-          "sevenToTen": "7–10 cm",
-          "elevenToFifteen": "11–15 cm",
-          "fifteenPlus": "15+ cm"
-        }
-      },
       "actions": {
         "back": "Voltar",
         "next": "Próximo",
-        "submit": "Enviar formulário",
+        "submit": "Enviar",
         "submitting": "Enviando..."
       },
-      "hints": {
-        "referenceImagesLimit": "Envie de 1 a {max} imagens.",
-        "placementPhotoOrientation": "Circule o local na imagem."
-      },
-      "progress": {
-        "currentStep": "Passo {current}/4"
-      },
       "errors": {
-        "submit": {
-          "failed": "Não foi possível enviar o formulário agora. Tente novamente."
-        },
-        "name": {
-          "required": "Por favor, informe seu nome."
-        },
-        "email": {
-          "required": "Por favor, informe seu e-mail.",
-          "email": "Por favor, informe um e-mail válido."
-        },
-        "placement": {
-          "required": "Por favor, informe a área da tatuagem."
-        },
         "approximateSize": {
           "required": "Por favor, selecione o tamanho aproximado."
         },
         "availability": {
           "required": "Por favor, informe data preferida ou disponibilidade.",
           "weekday": "Os horários de flash só estão disponíveis às terças e sextas-feiras."
+        },
+        "email": {
+          "email": "Por favor, informe um e-mail válido.",
+          "required": "Por favor, informe seu e-mail."
+        },
+        "name": {
+          "required": "Por favor, informe seu nome."
+        },
+        "placement": {
+          "required": "Por favor, informe a área da tatuagem."
+        },
+        "submit": {
+          "failed": "Não foi possível enviar o formulário agora. Tente novamente."
         }
       },
+      "fields": {
+        "approximateSize": "Tamanho aproximado",
+        "availability": "Data preferida / disponibilidade",
+        "email": "E-mail",
+        "likedWorkReason": "Me fale o que você gostou dessas referências",
+        "name": "Nome",
+        "placement": "Local do corpo",
+        "placementPhoto": "Foto da área do seu corpo a ser tatuado",
+        "referenceImages": "Imagens de referência para seu projeto"
+      },
+      "hints": {
+        "placementPhotoOrientation": "Circule o local na imagem.",
+        "referenceImagesLimit": "Envie de 1 a {max} imagens."
+      },
       "notice": "Enviar este formulário não confirma o orçamento. Depois de revisar seu projeto, alinhamos design, preço e data.",
+      "options": {
+        "approximateSize": {
+          "elevenToFifteen": "11–15 cm",
+          "fifteenPlus": "15+ cm",
+          "fourToSix": "4–6 cm",
+          "oneToThree": "1–3 cm",
+          "sevenToTen": "7–10 cm"
+        },
+        "select": "Selecionar",
+        "unsure": "Ainda não tenho certeza"
+      },
+      "placeholders": {
+        "availability": "Selecione uma terça-feira ou sexta-feira",
+        "email": "Seu e-mail",
+        "likedWorkReason": "Quais elementos são essenciais?",
+        "name": "Seu nome",
+        "placement": "Antebraço interno, Coxa frente, Costas",
+        "placementPhoto": "Circule o local na imagem"
+      },
+      "progress": {
+        "currentStep": "Passo {current}/4"
+      },
+      "sections": {
+        "aboutYou": "Para te conhecer melhor",
+        "availability": "Para conhecer sua disponibilidade",
+        "details": "Vamos entrar nos detalhes",
+        "futureTattoo": "Para planejar sua futura tatuagem"
+      },
       "success": "Obrigada! Recebi seu formulário.",
       "successTitle": "Pedido de orçamento enviado!"
+    },
+    "page": {
+      "description": "Preencha cada etapa para enviar sua solicitação de orçamento de tatuagem.",
+      "title": "Orçamento"
     }
   },
-  "tattooDetails": {
-    "title": "Cuidados com a pele",
-    "description": "Orientações para preparar e cuidar da sua tatuagem com segurança.",
-    "points": {
-      "consultation": "Antes da sessão, alinhe dúvidas e expectativas.",
-      "skinCare": "Hidrate a pele e evite exposição solar intensa.",
-      "designApproval": "Confirme o desenho e posicionamento antes da aplicação."
-    },
-    "imageAlt": "Exemplo de composição para detalhes da tatuagem"
-  },
   "faq": {
-    "title": "Talvez sua resposta esteja aqui",
     "categories": {
       "aboutTattoo": {
-        "title": "Sobre Tattoo",
         "items": {
-          "schedule": {
-            "question": "Como faço para agendar uma nova tattoo?",
-            "answer": "Preencha o formulário de {cta} e você receberá uma resposta em até 24h."
+          "flashSelection": {
+            "answer": "Em breve traremos mais detalhes sobre como escolher um flash disponível.",
+            "question": "Como escolher um flash disponível?"
           },
           "healing": {
-            "question": "Como funciona o processo de cicatrização?",
-            "answer": "Em breve traremos mais detalhes sobre os cuidados durante a cicatrização."
+            "answer": "Em breve traremos mais detalhes sobre os cuidados durante a cicatrização.",
+            "question": "Como funciona o processo de cicatrização?"
           },
-          "flashSelection": {
-            "question": "Como escolher um flash disponível?",
-            "answer": "Em breve traremos mais detalhes sobre como escolher um flash disponível."
+          "schedule": {
+            "answer": "Preencha o formulário de {cta} e você receberá uma resposta em até 24h.",
+            "question": "Como faço para agendar uma nova tattoo?"
           }
-        }
+        },
+        "title": "Sobre Tattoo"
       }
     },
     "cta": {
-      "booking": "ORÇAMENTO"
-    }
-  },
-  "shared": {
-    "fileUpload": {
-      "noFileSelected": "Nenhum arquivo selecionado",
-      "selectedFilesListLabel": "Arquivos selecionados",
-      "remove": "Remover {fileName}",
-      "errors": {
-        "required": "Adicione pelo menos {min} imagem.",
-        "max": "Você pode enviar no máximo {max} imagens.",
-        "invalidFiles": "Arquivo(s) não aceito(s): {fileNames}. Use imagens de até {maxSizeMb}MB."
-      }
+      "booking": "Orçamento"
     },
-    "confirmationModal": {
-      "close": "Fechar",
-      "closeAriaLabel": "Fechar modal"
-    },
-    "opensInNewTab": "abre em nova aba"
+    "title": "Talvez sua resposta esteja aqui"
   },
   "flashes": {
-    "title": "Designs Disponíveis",
-    "subtitle": "Flashes prontos para tatuar. Escolha o seu favorito.",
-    "loading": "Carregando designs disponíveis...",
-    "empty": "Nenhum design disponível no momento.",
     "card": {
-      "sizeLabel": "Tamanho",
-      "priceLabel": "Preço",
       "cta": "Quero esse",
-      "viewImageAriaLabel": "Ver imagem ampliada de {name}",
+      "priceLabel": "Preço",
+      "sizeLabel": "Tamanho",
       "status": {
         "available": "Disponível",
         "reserved": "Reservado",
         "sold": "Vendido"
-      }
+      },
+      "viewImageAriaLabel": "Ver imagem ampliada de {name}"
     },
+    "empty": "Nenhum design disponível no momento.",
     "lightbox": {
       "closeAriaLabel": "Fechar imagem ampliada"
     },
+    "loading": "Carregando designs disponíveis...",
     "requestModal": {
-      "title": "Quero o flash \"{name}\"",
-      "closeAriaLabel": "Fechar formulário de solicitação",
-      "fields": {
-        "name": "Nome",
-        "email": "Email",
-        "phoneNumber": "Telefone",
-        "description": "Descrição"
-      },
-      "placeholders": {
-        "name": "Seu nome completo",
-        "email": "seu@email.com",
-        "phoneNumber": "(11) 99999-0000",
-        "description": "Conte um pouco mais sobre o que você tem em mente"
-      },
-      "errors": {
-        "name": {
-          "required": "Por favor, informe seu nome."
-        },
-        "email": {
-          "required": "Por favor, informe seu e-mail.",
-          "email": "Por favor, informe um e-mail válido."
-        },
-        "phoneNumber": {
-          "required": "Por favor, informe seu telefone.",
-          "pattern": "Por favor, informe um telefone válido."
-        },
-        "submitFailed": "Não foi possível enviar sua solicitação agora. Tente novamente."
-      },
       "actions": {
         "submit": "Enviar solicitação",
         "submitting": "Enviando..."
-      }
+      },
+      "closeAriaLabel": "Fechar formulário de solicitação",
+      "errors": {
+        "email": {
+          "email": "Por favor, informe um e-mail válido.",
+          "required": "Por favor, informe seu e-mail."
+        },
+        "name": {
+          "required": "Por favor, informe seu nome."
+        },
+        "phoneNumber": {
+          "pattern": "Por favor, informe um telefone válido.",
+          "required": "Por favor, informe seu telefone."
+        },
+        "submitFailed": "Não foi possível enviar sua solicitação agora. Tente novamente."
+      },
+      "fields": {
+        "description": "Descrição",
+        "email": "Email",
+        "name": "Nome",
+        "phoneNumber": "Telefone"
+      },
+      "placeholders": {
+        "description": "Conte um pouco mais sobre o que você tem em mente",
+        "email": "seu@email.com",
+        "name": "Seu nome",
+        "phoneNumber": "(351) 99999-0000"
+      },
+      "title": "Quero o flash \"{name}\""
     },
+    "subtitle": "Flashes prontos para tatuar. Escolha o seu favorito.",
     "successModal": {
-      "title": "Solicitação enviada!",
-      "message": "Recebemos seu interesse. Em breve entraremos em contato."
-    }
+      "message": "Recebemos seu interesse. Em breve entraremos em contato.",
+      "title": "Solicitação enviada!"
+    },
+    "title": "Designs Disponíveis"
   },
   "footer": {
-    "copyright": "© {year} Mineli Silva. Todos os direitos reservados.",
+    "copyright": "© {year} Mineli Silva.",
     "social": {
       "instagram": "Instagram"
     }
   },
+  "header": {
+    "brandName": "Mineli",
+    "logoAlt": "Logo da Mineli",
+    "nav": {
+      "booking": "Orçamento",
+      "close": "Fechar menu",
+      "faq": "Perguntas",
+      "flashes": "Flashes",
+      "landing": "Início",
+      "open": "Abrir menu",
+      "store": "Loja"
+    }
+  },
+  "landingArea": {
+    "branding": {
+      "cta": "Solicitar Orçamento",
+      "tagline": "Arte que se move com você",
+      "titleLineOne": "Mineli",
+      "titleLineTwo": "Silva"
+    }
+  },
+  "shared": {
+    "confirmationModal": {
+      "close": "Fechar",
+      "closeAriaLabel": "Fechar modal"
+    },
+    "fileUpload": {
+      "errors": {
+        "invalidFiles": "Arquivo(s) não aceito(s): {fileNames}. Use imagens de até {maxSizeMb}MB.",
+        "max": "Você pode enviar no máximo {max} imagens.",
+        "required": "Adicione pelo menos {min} imagem."
+      },
+      "noFileSelected": "Nenhum arquivo selecionado",
+      "remove": "Remover {fileName}",
+      "selectedFilesListLabel": "Arquivos selecionados"
+    },
+    "opensInNewTab": "abre em nova aba"
+  },
   "temporaryBuilding": {
-    "title": "Ainda estamos em construção",
-    "subtitle": "Mas acesse o portfólio e solicite um orçamento no link abaixo",
     "social": {
       "instagram": "Instagram"
+    },
+    "subtitle": "Mas acesse o portfólio e solicite um orçamento no link abaixo",
+    "title": "Ainda estamos em construção"
+  },
+  "themeMode": {
+    "actions": {
+      "switchToDark": "Modo escuro",
+      "switchToLight": "Modo claro"
     }
   }
 }

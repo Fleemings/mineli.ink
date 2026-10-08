@@ -17,6 +17,6 @@ export class Language {
   protected readonly selectedLocale = this.i18n.locale;
 
   protected onLocaleSelect(locale: Locale): void {
-    void this.i18n.setLocale(locale);
+    this.i18n.setLocale(locale);
   }
 }

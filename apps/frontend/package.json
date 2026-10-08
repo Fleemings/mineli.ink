@@ -21,9 +21,7 @@
     "@angular/material": "^22.1.7",
     "@angular/platform-browser": "^22.0.0",
     "@angular/router": "^22.0.0",
-    "@ng-bootstrap/ng-bootstrap": "^21.0.0",
     "@splinetool/runtime": "^2.0.58",
-    "bootstrap": "^5.3.8",
     "gsap": "^3.13.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
