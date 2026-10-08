@@ -4,7 +4,18 @@
   </div>
 
   <div class="temporary-building__content">
-    <h1 class="temporary-building__title" #title>{{ 'temporaryBuilding.title' | translate }}</h1>
+    <!--
+      No Angular interpolation here on purpose: GSAP (SplitText/ScrambleText) is the
+      sole owner of this element's visual text content (see TemporaryBuilding's
+      playTitleAnimation()). aria-label gives assistive tech the real translated
+      string directly, which takes precedence over the (purely decorative, animated)
+      child text/chars for the accessible name.
+    -->
+    <h1
+      class="temporary-building__title"
+      #title
+      [attr.aria-label]="'temporaryBuilding.title' | translate"
+    ></h1>
     <p class="temporary-building__subtitle">{{ 'temporaryBuilding.subtitle' | translate }}</p>
 
     <a
