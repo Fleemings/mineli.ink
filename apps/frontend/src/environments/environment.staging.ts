@@ -1,11 +1,11 @@
 // Used for the Cloudflare Pages "dev" deployment (built with `--configuration staging`),
 // talking to the DigitalOcean App Platform dev backend. Replace the placeholder host
 // below with that app's real URL (or, better, a stable custom subdomain such as
-// https://api-dev.mineli.ink mapped to it in DigitalOcean App Platform).
+// https://api-dev.minelisilva.com mapped to it in DigitalOcean App Platform).
 export const environment = {
   production: false,
-  apiUrl: 'https://api-dev.mineli.ink/api',
-  openApiUrl: 'https://api-dev.mineli.ink/api/openapi.json',
+  apiUrl: 'https://api-dev.minelisilva.com/api',
+  openApiUrl: 'https://api-dev.minelisilva.com/api/openapi.json',
   apiTimeout: 30000,
   logLevel: 'debug',
   enableMockData: false,

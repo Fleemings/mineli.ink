@@ -1,7 +1,7 @@
 export const environment = {
   production: true,
-  apiUrl: 'https://api.mineli.ink/api',
-  openApiUrl: 'https://api.mineli.ink/api/openapi.json',
+  apiUrl: 'https://api.minelisilva.com/api',
+  openApiUrl: 'https://api.minelisilva.com/api/openapi.json',
   apiTimeout: 60000,
   logLevel: 'warn',
   enableMockData: false,
