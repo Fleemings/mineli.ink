@@ -1,4 +1,4 @@
-import { Component, ElementRef, AfterViewInit, OnDestroy, ViewChild, inject } from '@angular/core';
+import { Component, ElementRef, OnDestroy, ViewChild, afterRenderEffect, inject } from '@angular/core';
 import gsap from 'gsap';
 import { ScrambleTextPlugin } from 'gsap/ScrambleTextPlugin';
 import { SplitText } from 'gsap/SplitText';
@@ -15,7 +15,7 @@ gsap.registerPlugin(SplitText, ScrambleTextPlugin);
   templateUrl: './temporary-building.html',
   styleUrl: './temporary-building.sass'
 })
-export class TemporaryBuilding implements AfterViewInit, OnDestroy {
+export class TemporaryBuilding implements OnDestroy {
   private readonly i18n = inject(I18nService);
   protected readonly instagramUrl = environment.social.instagramUrl;
 
@@ -25,8 +25,16 @@ export class TemporaryBuilding implements AfterViewInit, OnDestroy {
   private titleSplit?: SplitText;
   private titleTimeline?: gsap.core.Timeline;
 
-  ngAfterViewInit(): void {
-    this.playTitleAnimation();
+  constructor() {
+    // The title is animated imperatively via GSAP (SplitText/ScrambleText), which
+    // replaces its DOM text node and detaches it from Angular's own `| translate`
+    // binding. Re-running the animation here whenever the locale signal changes is
+    // what keeps the title in sync with language switches, instead of only picking
+    // up the new text on a full page reload.
+    afterRenderEffect(() => {
+      this.i18n.locale();
+      this.playTitleAnimation();
+    });
   }
 
   ngOnDestroy(): void {
