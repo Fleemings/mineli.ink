@@ -34,6 +34,7 @@
     class="app-header__bottom"
     [class.app-header__bottom--open]="isMobileMenuOpen()"
     (click)="closeMobileMenu()"
+    (keydown.escape)="closeMobileMenu()"
   >
     <ul class="app-header__nav">
       <li class="app-header__nav-item--theme">

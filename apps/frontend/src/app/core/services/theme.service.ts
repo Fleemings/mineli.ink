@@ -39,7 +39,7 @@ export class ThemeService {
   }
 
   private applyTheme(theme: Theme): void {
-    this.document.documentElement.setAttribute('data-theme', theme);
+    this.document.documentElement.dataset['theme'] = theme;
     if (this.isBrowser) {
       localStorage.setItem('theme', theme);
     }
