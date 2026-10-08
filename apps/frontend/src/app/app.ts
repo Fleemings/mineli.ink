@@ -18,7 +18,6 @@ import { SectionNavigationService } from './core/services/section-navigation.ser
 import { Header } from './shared/components/header/header';
 import { Footer } from './shared/components/footer/footer';
 import { LandingArea } from './screens/landing-area/landing-area';
-import { Flashes } from './screens/flashes/flashes';
 import { Booking } from './screens/booking/booking';
 import { SectionId } from './shared/types/section.model';
 import { Faq } from './screens/faq/faq';
@@ -32,7 +31,7 @@ const SECTION_IDS: ReadonlySet<SectionId> = new Set(['landing', 'flashes', 'book
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [Header, Footer, LandingArea, Flashes, Booking, Faq, TemporaryBuilding],
+  imports: [Header, Footer, LandingArea, Booking, Faq, TemporaryBuilding],
   templateUrl: './app.html',
   styleUrl: './app.sass'
 })
@@ -78,7 +77,9 @@ export class App implements AfterViewInit, OnDestroy {
       .filter((id): id is SectionId => this.isSectionId(id));
 
     this.wrapIndex = gsap.utils.wrap(0, sections.length);
-    this.sectionHeadings = sections.map((section) => section.querySelector<HTMLElement>('[data-section-heading]'));
+    this.sectionHeadings = sections.map((section) =>
+      section.querySelector<HTMLElement>('[data-section-heading]')
+    );
     this.headingSplits = this.sectionHeadings.map(() => null);
 
     gsap.set(sections, { autoAlpha: 0, zIndex: 0 });
@@ -92,9 +93,11 @@ export class App implements AfterViewInit, OnDestroy {
       preventDefault: true
     });
 
-    this.sectionRequestSubscription = this.sectionNavigation.sectionRequests$.subscribe((sectionId) => {
-      this.onSectionRequested(sectionId);
-    });
+    this.sectionRequestSubscription = this.sectionNavigation.sectionRequests$.subscribe(
+      (sectionId) => {
+        this.onSectionRequested(sectionId);
+      }
+    );
 
     this.handleOverlayScroll(0, 1);
   }
@@ -153,7 +156,11 @@ export class App implements AfterViewInit, OnDestroy {
     this.handleOverlayScroll(targetIndex, direction);
   }
 
-  private animateSectionHeading(index: number, dFactor: 1 | -1, timeline: gsap.core.Timeline): void {
+  private animateSectionHeading(
+    index: number,
+    dFactor: 1 | -1,
+    timeline: gsap.core.Timeline
+  ): void {
     const heading = this.sectionHeadings[index];
     if (!heading) {
       return;

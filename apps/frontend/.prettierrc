@@ -10,6 +10,13 @@
         "plugins": ["prettier-plugin-sort-json"],
         "jsonRecursiveSort": true
       }
+    },
+    {
+      "files": ["src/app/**/*.html"],
+      "excludeFiles": ["src/index.html"],
+      "options": {
+        "parser": "angular"
+      }
     }
   ]
 }

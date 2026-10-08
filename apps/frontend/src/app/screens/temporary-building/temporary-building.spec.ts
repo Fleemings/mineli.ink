@@ -24,8 +24,12 @@ describe('TemporaryBuilding', () => {
   });
 
   it('renders the title and subtitle text', () => {
-    const title: HTMLElement = fixture.debugElement.query(By.css('.temporary-building__title')).nativeElement;
-    const subtitle: HTMLElement = fixture.debugElement.query(By.css('.temporary-building__subtitle')).nativeElement;
+    const title: HTMLElement = fixture.debugElement.query(
+      By.css('.temporary-building__title')
+    ).nativeElement;
+    const subtitle: HTMLElement = fixture.debugElement.query(
+      By.css('.temporary-building__subtitle')
+    ).nativeElement;
 
     expect(title.textContent?.trim()).toBeTruthy();
     expect(subtitle.textContent?.trim()).toBeTruthy();
