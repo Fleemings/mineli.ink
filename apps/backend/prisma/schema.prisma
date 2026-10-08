@@ -1,0 +1,38 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+// Registered customers/admins. Supports both local (email+password) and
+// Google OAuth sign-up/login — see AuthService for the exact flows.
+model User {
+  id          String   @id @default(cuid())
+  name        String
+  email       String   @unique
+  // Nullable because accounts created via Google sign-in never set a password.
+  password    String?
+  // Nullable + unique because local accounts don't have one until they link Google.
+  googleId    String?  @unique
+  phoneNumber String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+// Configurable option lists surfaced on the public booking form
+// (e.g. approximate tattoo size choices). Not a record of actual
+// booking submissions — those are forwarded by email only, never persisted.
+model Booking {
+  id        String   @id @default(cuid())
+  type      String
+  value     String
+  isActive  Boolean  @default(true)
+  sortOrder Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([type, isActive, sortOrder])
+}
