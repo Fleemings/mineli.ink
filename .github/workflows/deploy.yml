@@ -183,10 +183,11 @@ jobs:
         run: |
           set -euo pipefail
 
+          # Keep this version in sync with apps/frontend/package.json's "wrangler" devDependency.
           if [ "${{ needs.resolve-environment.outputs.environment }}" = "prod" ]; then
-            npx --no-install wrangler deploy
+            npx --no-install wrangler@4.148.0 deploy
           else
-            npx --no-install wrangler deploy --env dev
+            npx --no-install wrangler@4.148.0 deploy --env dev
           fi
 
   # ---------------------------------------------------------
