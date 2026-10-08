@@ -6,7 +6,7 @@
     {
       "files": ["**/i18n/**.json"],
       "options": {
-        "parser": "angular",
+        "parser": "json",
         "plugins": ["prettier-plugin-sort-json"],
         "jsonRecursiveSort": true
       }
