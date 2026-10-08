@@ -185,7 +185,7 @@ jobs:
 
           # Keep this version in sync with apps/frontend/package.json's "wrangler" devDependency.
           if [ "${{ needs.resolve-environment.outputs.environment }}" = "prod" ]; then
-            npx --no-install wrangler@4.148.0 deploy
+            npx --no-install wrangler@4.148.0 deploy --env=""
           else
             npx --no-install wrangler@4.148.0 deploy --env dev
           fi

@@ -9,10 +9,13 @@
     "not_found_handling": "single-page-application"
   },
 
+  "routes": [{ "pattern": "minelisilva.com", "custom_domain": true }],
+
   "env": {
     "dev": {
       "name": "mineli-ink-dev",
-      "workers_dev": true
+      "workers_dev": true,
+      "routes": [{ "pattern": "dev.minelisilva.com", "custom_domain": true }]
     }
   }
 }
