@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/wrangler/config-schema.json",
-  "name": "mineli-ink",
+  "name": "minelisilva",
   "compatibility_date": "2026-10-07",
   "workers_dev": true,
 
@@ -13,7 +13,7 @@
 
   "env": {
     "dev": {
-      "name": "mineli-ink-dev",
+      "name": "minelisilva-dev",
       "workers_dev": true,
       "routes": [{ "pattern": "dev.minelisilva.com", "custom_domain": true }]
     }
