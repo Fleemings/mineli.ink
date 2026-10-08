@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "Mineli.ink - Monorepo Application",
   "private": true,
+  "engines": {
+    "node": ">=22.22.3"
+  },
   "workspaces": [
     "apps/*"
   ],
