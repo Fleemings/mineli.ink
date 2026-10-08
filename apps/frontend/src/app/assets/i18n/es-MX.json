@@ -5,26 +5,17 @@
     "nav": {
       "landing": "Inicio",
       "booking": "Presupuesto",
-      "skinCare": "Cuidados",
       "faq": "Preguntas",
       "store": "Tienda",
-      "open": "Abrir menú",
-      "close": "Cerrar menú",
-      "flashes": "Flashes"
+    "open": "Abrir menú",
+    "close": "Cerrar menú",
+    "flashes": "Flashes"
     }
   },
   "themeMode": {
     "actions": {
-      "switchToLight": "Modo claro",
-      "switchToDark": "Modo oscuro"
-    }
-  },
-  "language": {
-    "label": "Idioma",
-    "options": {
-      "portuguese": "Portugués",
-      "spanish": "Español",
-      "english": "Inglés"
+    "switchToLight": "Modo claro",
+    "switchToDark": "Modo oscuro"
     }
   },
   "landingArea": {
@@ -58,8 +49,8 @@
         "availability": "Fecha preferida / disponibilidad"
       },
       "placeholders": {
-        "name": "Ej.: María Silva",
-        "email": "Ej.: maria@email.com",
+        "name": "Tu nombre",
+        "email": "Tu correo",
         "placement": "Antebrazo interno, Muslo frontal, Espalda",
         "likedWorkReason": "¿Qué elementos son esenciales?",
         "placementPhoto": "Marca la zona en la imagen",
@@ -79,7 +70,7 @@
       "actions": {
         "back": "Volver",
         "next": "Siguiente",
-        "submit": "Enviar formulario",
+        "submit": "Enviar",
         "submitting": "Enviando..."
       },
       "hints": {
@@ -116,16 +107,6 @@
       "successTitle": "¡Solicitud de presupuesto enviada!"
     }
   },
-  "tattooDetails": {
-    "title": "Cuidados de la piel",
-    "description": "Guía para preparar y cuidar tu tatuaje de forma segura.",
-    "points": {
-      "consultation": "Antes de la sesión, alinea dudas y expectativas.",
-      "skinCare": "Hidrata la piel y evita exposición solar intensa.",
-      "designApproval": "Confirma el diseño final y la zona antes de tatuar."
-    },
-    "imageAlt": "Ejemplo de composición para detalles del tatuaje"
-  },
   "faq": {
     "title": "Quizás tu respuesta esté aquí",
     "categories": {
@@ -148,7 +129,7 @@
       }
     },
     "cta": {
-      "booking": "PRESUPUESTO"
+      "booking": "Presupuesto"
     }
   },
   "shared": {
@@ -197,7 +178,7 @@
         "description": "Descripción"
       },
       "placeholders": {
-        "name": "Tu nombre completo",
+        "name": "Tu nombre",
         "email": "tu@correo.com",
         "phoneNumber": "+52 55 0000 0000",
         "description": "Cuéntanos un poco más sobre lo que tienes en mente"
@@ -227,7 +208,7 @@
     }
   },
   "footer": {
-    "copyright": "© {year} Mineli Silva. Todos los derechos reservados.",
+    "copyright": "© {year} Mineli Silva.",
     "social": {
       "instagram": "Instagram"
     }

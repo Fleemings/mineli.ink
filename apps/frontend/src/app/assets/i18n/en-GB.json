@@ -5,26 +5,17 @@
     "nav": {
       "landing": "Home",
       "booking": "Quote",
-      "skinCare": "Care",
       "faq": "Questions",
       "store": "Store",
-      "open": "Open menu",
-      "close": "Close menu",
-      "flashes": "Flashes"
+    "open": "Open menu",
+    "close": "Close menu",
+    "flashes": "Flashes"
     }
   },
   "themeMode": {
     "actions": {
-      "switchToLight": "Light mode",
-      "switchToDark": "Dark mode"
-    }
-  },
-  "language": {
-    "label": "Language",
-    "options": {
-      "portuguese": "Portuguese",
-      "spanish": "Spanish",
-      "english": "English"
+    "switchToLight": "Light mode",
+    "switchToDark": "Dark mode"
     }
   },
   "landingArea": {
@@ -58,8 +49,8 @@
         "availability": "Preferred date / availability"
       },
       "placeholders": {
-        "name": "e.g. Jane Doe",
-        "email": "e.g. jane@email.com",
+        "name": "Your name",
+        "email": "Your email",
         "placement": "Inner forearm, Front thigh, Back",
         "likedWorkReason": "What elements are essential?",
         "placementPhoto": "Circle the spot on the image",
@@ -79,7 +70,7 @@
       "actions": {
         "back": "Back",
         "next": "Next",
-        "submit": "Send form",
+        "submit": "Send",
         "submitting": "Sending..."
       },
       "hints": {
@@ -116,16 +107,6 @@
       "successTitle": "Quote request submitted!"
     }
   },
-  "tattooDetails": {
-    "title": "Skin care",
-    "description": "Guidance to prepare and care for your tattoo safely.",
-    "points": {
-      "consultation": "Before your session, align questions and expectations.",
-      "skinCare": "Keep your skin moisturized and avoid intense sun exposure.",
-      "designApproval": "Confirm the final design and placement before tattooing."
-    },
-    "imageAlt": "Example composition for tattoo details"
-  },
   "faq": {
     "title": "Your answer might be here",
     "categories": {
@@ -148,7 +129,7 @@
       }
     },
     "cta": {
-      "booking": "QUOTE"
+      "booking": "Quote"
     }
   },
   "shared": {
@@ -197,7 +178,7 @@
         "description": "Description"
       },
       "placeholders": {
-        "name": "Your full name",
+        "name": "Your name",
         "email": "you@example.com",
         "phoneNumber": "+1 555 000 0000",
         "description": "Tell us a bit more about what you have in mind"
@@ -227,7 +208,7 @@
     }
   },
   "footer": {
-    "copyright": "© {year} Mineli Silva. All rights reserved.",
+    "copyright": "© {year} Mineli Silva.",
     "social": {
       "instagram": "Instagram"
     }

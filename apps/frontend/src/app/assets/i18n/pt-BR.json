@@ -5,26 +5,17 @@
     "nav": {
       "landing": "Início",
       "booking": "Orçamento",
-      "skinCare": "Cuidados",
       "faq": "Perguntas",
       "store": "Loja",
-      "open": "Abrir menu",
-      "close": "Fechar menu",
-      "flashes": "Flashes"
+    "open": "Abrir menu",
+    "close": "Fechar menu",
+    "flashes": "Flashes"
     }
   },
   "themeMode": {
     "actions": {
-      "switchToLight": "Modo claro",
-      "switchToDark": "Modo escuro"
-    }
-  },
-  "language": {
-    "label": "Idioma",
-    "options": {
-      "portuguese": "Português",
-      "spanish": "Espanhol",
-      "english": "Inglês"
+    "switchToLight": "Modo claro",
+    "switchToDark": "Modo escuro"
     }
   },
   "landingArea": {
@@ -79,7 +70,7 @@
       "actions": {
         "back": "Voltar",
         "next": "Próximo",
-        "submit": "Enviar formulário",
+        "submit": "Enviar",
         "submitting": "Enviando..."
       },
       "hints": {
@@ -116,16 +107,6 @@
       "successTitle": "Pedido de orçamento enviado!"
     }
   },
-  "tattooDetails": {
-    "title": "Cuidados com a pele",
-    "description": "Orientações para preparar e cuidar da sua tatuagem com segurança.",
-    "points": {
-      "consultation": "Antes da sessão, alinhe dúvidas e expectativas.",
-      "skinCare": "Hidrate a pele e evite exposição solar intensa.",
-      "designApproval": "Confirme o desenho e posicionamento antes da aplicação."
-    },
-    "imageAlt": "Exemplo de composição para detalhes da tatuagem"
-  },
   "faq": {
     "title": "Talvez sua resposta esteja aqui",
     "categories": {
@@ -148,7 +129,7 @@
       }
     },
     "cta": {
-      "booking": "ORÇAMENTO"
+      "booking": "Orçamento"
     }
   },
   "shared": {
@@ -197,9 +178,9 @@
         "description": "Descrição"
       },
       "placeholders": {
-        "name": "Seu nome completo",
+        "name": "Seu nome",
         "email": "seu@email.com",
-        "phoneNumber": "(11) 99999-0000",
+        "phoneNumber": "(351) 99999-0000",
         "description": "Conte um pouco mais sobre o que você tem em mente"
       },
       "errors": {
@@ -227,7 +208,7 @@
     }
   },
   "footer": {
-    "copyright": "© {year} Mineli Silva. Todos os direitos reservados.",
+    "copyright": "© {year} Mineli Silva.",
     "social": {
       "instagram": "Instagram"
     }
