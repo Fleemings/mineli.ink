@@ -2,7 +2,7 @@
   "$schema": "./node_modules/wrangler/config-schema.json",
   "name": "minelisilva",
   "compatibility_date": "2026-10-07",
-  "workers_dev": true,
+  "workers_dev": false,
 
   "assets": {
     "directory": "./dist/mineli-ink/browser",
