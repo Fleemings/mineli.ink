@@ -19,7 +19,9 @@ describe('I18nService', () => {
   it('translates a key for the active locale immediately (no async init needed)', () => {
     const service = createService();
 
-    expect(service.translate('booking.form.sections.aboutYou')).not.toBe('booking.form.sections.aboutYou');
+    expect(service.translate('booking.form.sections.aboutYou')).not.toBe(
+      'booking.form.sections.aboutYou'
+    );
   });
 
   it('switches locale and updates the document language attribute', () => {
