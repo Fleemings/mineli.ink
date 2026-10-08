@@ -1,0 +1,21 @@
+{
+  "$schema": "./node_modules/wrangler/config-schema.json",
+  "name": "minelisilva",
+  "compatibility_date": "2026-10-07",
+  "workers_dev": false,
+
+  "assets": {
+    "directory": "./dist/mineli-ink/browser",
+    "not_found_handling": "single-page-application"
+  },
+
+  "routes": [{ "pattern": "minelisilva.com", "custom_domain": true }],
+
+  "env": {
+    "dev": {
+      "name": "minelisilva-dev",
+      "workers_dev": true,
+      "routes": [{ "pattern": "dev.minelisilva.com", "custom_domain": true }]
+    }
+  }
+}
