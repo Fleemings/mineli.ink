@@ -16,34 +16,30 @@ describe('I18nService', () => {
     expect(createService()).toBeTruthy();
   });
 
-  it('loads translations for the active and default locales on initialize', async () => {
+  it('translates a key for the active locale immediately (no async init needed)', () => {
     const service = createService();
-    await service.initialize();
 
     expect(service.translate('booking.form.sections.aboutYou')).not.toBe('booking.form.sections.aboutYou');
   });
 
-  it('switches locale and updates the document language attribute', async () => {
+  it('switches locale and updates the document language attribute', () => {
     const service = createService();
-    await service.initialize();
 
-    await service.setLocale('en-GB');
+    service.setLocale('en-GB');
 
     expect(service.locale()).toBe('en-GB');
     expect(document.documentElement.getAttribute('lang')).toBe('en-GB');
     expect(localStorage.getItem('mineli.locale')).toBe('en-GB');
   });
 
-  it('falls back to the translation key when no value exists in any locale', async () => {
+  it('falls back to the translation key when no value exists in any locale', () => {
     const service = createService();
-    await service.initialize();
 
     expect(service.translate('this.key.does.not.exist')).toBe('this.key.does.not.exist');
   });
 
-  it('returns a string even when params are passed to a template without placeholders', async () => {
+  it('returns a string even when params are passed to a template without placeholders', () => {
     const service = createService();
-    await service.initialize();
 
     const result = service.translate('booking.form.sections.aboutYou', { name: 'Ana' });
     expect(typeof result).toBe('string');

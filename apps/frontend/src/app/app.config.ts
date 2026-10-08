@@ -1,5 +1,4 @@
 import {
-  APP_INITIALIZER,
   ApplicationConfig,
   LOCALE_ID,
   inject,
@@ -14,12 +13,6 @@ export const appConfig: ApplicationConfig = {
     provideZonelessChangeDetection(),
     provideBrowserGlobalErrorListeners(),
     provideHttpClient(),
-    {
-      provide: APP_INITIALIZER,
-      useFactory: (i18n: I18nService) => () => i18n.initialize(),
-      deps: [I18nService],
-      multi: true
-    },
     {
       provide: LOCALE_ID,
       useFactory: () => inject(I18nService).locale()
