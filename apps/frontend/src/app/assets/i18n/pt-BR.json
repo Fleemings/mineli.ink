@@ -7,9 +7,9 @@
       "booking": "Orçamento",
       "faq": "Perguntas",
       "store": "Loja",
-    "open": "Abrir menu",
-    "close": "Fechar menu",
-    "flashes": "Flashes"
+      "open": "Abrir menu",
+     "close": "Fechar menu",
+     "flashes": "Flashes"
     }
   },
   "themeMode": {

@@ -7,9 +7,9 @@
       "booking": "Quote",
       "faq": "Questions",
       "store": "Store",
-    "open": "Open menu",
-    "close": "Close menu",
-    "flashes": "Flashes"
+      "open": "Open menu",
+      "close": "Close menu",
+      "flashes": "Flashes"
     }
   },
   "themeMode": {
