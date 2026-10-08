@@ -1,0 +1,88 @@
+<header class="app-header container-fluid">
+  <div class="app-header__top">
+    <a
+      class="app-header__brand app-header__logo--centered"
+      href="#landing"
+      (click)="scrollToSection($event, 'landing')"
+    >
+      <img class="app-header__logo" [src]="logoSrc()" [attr.alt]="'header.logoAlt' | translate" />
+      <span class="app-header__brand-name">{{ 'header.brandName' | translate }}</span>
+    </a>
+    <div class="app-header__controls">
+      <app-theme-mode class="app-header__controls-theme" />
+      <app-language />
+      <button
+        type="button"
+        class="app-header__menu-toggle"
+        [class.app-header__menu-toggle--open]="isMobileMenuOpen()"
+        [attr.aria-expanded]="isMobileMenuOpen()"
+        aria-controls="app-header-nav"
+        [attr.aria-label]="
+          (isMobileMenuOpen() ? 'header.nav.close' : 'header.nav.open') | translate
+        "
+        (click)="toggleMobileMenu()"
+      >
+        <span class="app-header__burger" aria-hidden="true">
+          <span class="app-header__burger-bar app-header__burger-bar--top"></span>
+          <span class="app-header__burger-bar app-header__burger-bar--bottom"></span>
+        </span>
+      </button>
+    </div>
+  </div>
+  <nav
+    id="app-header-nav"
+    class="app-header__bottom"
+    [class.app-header__bottom--open]="isMobileMenuOpen()"
+    (click)="closeMobileMenu()"
+  >
+    <ul class="app-header__nav">
+      <li class="app-header__nav-item--theme">
+        <app-theme-mode />
+      </li>
+      <li>
+        <a
+          class="app-header__link"
+          [class.app-header__link--active]="sectionNavigation.activeSection() === 'landing'"
+          [attr.aria-current]="sectionNavigation.activeSection() === 'landing' ? 'page' : null"
+          href="#landing"
+          (click)="scrollToSection($event, 'landing')"
+        >
+          {{ 'header.nav.landing' | translate }}
+        </a>
+      </li>
+      <li>
+        <a
+          class="app-header__link"
+          [class.app-header__link--active]="sectionNavigation.activeSection() === 'flashes'"
+          [attr.aria-current]="sectionNavigation.activeSection() === 'flashes' ? 'page' : null"
+          href="#flashes"
+          (click)="scrollToSection($event, 'flashes')"
+        >
+          {{ 'header.nav.flashes' | translate }}
+        </a>
+      </li>
+      <li>
+        <a
+          class="app-header__link"
+          [class.app-header__link--active]="sectionNavigation.activeSection() === 'booking'"
+          [attr.aria-current]="sectionNavigation.activeSection() === 'booking' ? 'page' : null"
+          href="#booking"
+          (click)="scrollToSection($event, 'booking')"
+        >
+          {{ 'header.nav.booking' | translate }}
+        </a>
+      </li>
+      <li>
+        <a
+          class="app-header__link"
+          [class.app-header__link--active]="sectionNavigation.activeSection() === 'faq'"
+          [attr.aria-current]="sectionNavigation.activeSection() === 'faq' ? 'page' : null"
+          href="#faq"
+          (click)="scrollToSection($event, 'faq')"
+        >
+          {{ 'header.nav.faq' | translate }}
+        </a>
+      </li>
+    </ul>
+  </nav>
+</header>

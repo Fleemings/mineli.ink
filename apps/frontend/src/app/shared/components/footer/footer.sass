@@ -1,0 +1,74 @@
+.app-footer
+  position: fixed
+  bottom: 0
+  left: 0
+  right: 0
+  z-index: 1040
+  height: var(--layout-footer-height)
+  background-color: transparent
+  backdrop-filter: blur(0.2rem)
+  border-top-left-radius: 1.3rem
+  border-top-right-radius: 1.3rem
+  box-shadow: 0 -0.125rem 1rem 1px rgba(0, 0, 0, 0.1)
+  overflow-x: hidden
+
+.app-footer__inner
+  height: 100%
+  margin: 0 auto
+  display: flex
+  align-items: center
+  justify-content: space-between
+  gap: 0.75rem
+  padding: 0 clamp(1rem, 3vw, 2rem)
+
+.app-footer__copyright
+  margin: 0
+  color: var(--color-text-secondary)
+  font-size: 0.75rem
+  letter-spacing: 0.02em
+
+.app-footer__social
+  display: flex
+  align-items: center
+  margin: 0
+  padding: 0
+  list-style: none
+
+.app-footer__social-link
+  display: inline-flex
+  align-items: center
+  gap: 0.45rem
+  color: var(--color-text-primary)
+  text-decoration: none
+  font-size: 0.8rem
+  font-weight: 600
+  letter-spacing: 0.04em
+  padding: 0.35rem 0.6rem
+  border-radius: 999px
+  transition: color 0.2s ease, background-color 0.2s ease
+
+.app-footer__social-link:hover,
+.app-footer__social-link:focus-visible
+  color: var(--color-accent)
+  background: color-mix(in srgb, var(--color-accent) 18%, transparent)
+
+.app-footer__social-link:focus-visible
+  outline: 0.125rem solid var(--color-accent)
+  outline-offset: 0.125rem
+
+.app-footer__social-icon
+  font-size: 1.1rem
+  line-height: 1
+
+@media (max-width: 40rem)
+  .app-footer__copyright
+    display: none
+
+  .app-footer__inner
+    justify-content: center
+
+  .app-footer__social-label
+    display: none
+
+  .app-footer__social-icon
+    font-size: 1.3rem

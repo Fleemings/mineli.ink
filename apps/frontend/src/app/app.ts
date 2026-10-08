@@ -17,10 +17,7 @@ import { Subscription } from 'rxjs';
 import { SectionNavigationService } from './core/services/section-navigation.service';
 import { Header } from './shared/components/header/header';
 import { Footer } from './shared/components/footer/footer';
-import { LandingArea } from './screens/landing-area/landing-area';
-import { Booking } from './screens/booking/booking';
 import { SectionId } from './shared/types/section.model';
-import { Faq } from './screens/faq/faq';
 import { TemporaryBuilding } from './screens/temporary-building/temporary-building';
 import { environment } from '../environments/environment';
 
@@ -31,7 +28,7 @@ const SECTION_IDS: ReadonlySet<SectionId> = new Set(['landing', 'flashes', 'book
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [Header, Footer, LandingArea, Booking, Faq, TemporaryBuilding],
+  imports: [Header, Footer, TemporaryBuilding],
   templateUrl: './app.html',
   styleUrl: './app.sass'
 })
