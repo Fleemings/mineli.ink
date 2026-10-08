@@ -1,5 +1,5 @@
 import { DOCUMENT, isPlatformBrowser } from '@angular/common';
-import { Inject, Injectable, PLATFORM_ID, signal } from '@angular/core';
+import { Injectable, PLATFORM_ID, inject, signal } from '@angular/core';
 
 export type Theme = 'dark' | 'light';
 
@@ -7,16 +7,14 @@ export type Theme = 'dark' | 'light';
   providedIn: 'root'
 })
 export class ThemeService {
+  private readonly document = inject(DOCUMENT);
+  private readonly isBrowser = isPlatformBrowser(inject(PLATFORM_ID));
+
   private readonly currentTheme = signal<Theme>('dark');
-  private readonly isBrowser: boolean;
 
   readonly theme = this.currentTheme.asReadonly();
 
-  constructor(
-    @Inject(DOCUMENT) private readonly document: Document,
-    @Inject(PLATFORM_ID) platformId: object
-  ) {
-    this.isBrowser = isPlatformBrowser(platformId);
+  constructor() {
     this.initializeTheme();
   }
 
