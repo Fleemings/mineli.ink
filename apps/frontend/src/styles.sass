@@ -1,1 +1,113 @@
-/* You can add global styles to this file, and also import other style files */
+@font-face
+  font-family: 'Montserrat'
+  src: url('./app/assets/fonts/Montserrat-Light.ttf') format('truetype')
+  font-style: normal
+  font-weight: 300
+  font-display: swap
+
+@font-face
+  font-family: 'Montserrat'
+  src: url('./app/assets/fonts/Montserrat-Regular.ttf') format('truetype')
+  font-style: normal
+  font-weight: 400
+  font-display: swap
+
+@font-face
+  font-family: 'Montserrat'
+  src: url('./app/assets/fonts/Montserrat-Medium.ttf') format('truetype')
+  font-style: normal
+  font-weight: 500
+  font-display: swap
+
+@font-face
+  font-family: 'Montserrat'
+  src: url('./app/assets/fonts/Montserrat-Bold.ttf') format('truetype')
+  font-style: normal
+  font-weight: 600
+  font-display: swap
+
+@font-face
+  font-family: 'Montserrat'
+  src: url('./app/assets/fonts/Montserrat-SemiBold.ttf') format('truetype')
+  font-style: normal
+  font-weight: 700
+  font-display: swap
+
+@font-face
+  font-family: 'Montserrat'
+  src: url('./app/assets/fonts/Montserrat-ExtraBold.ttf') format('truetype')
+  font-style: normal
+  font-weight: 800
+  font-display: swap
+
+:root
+  --layout-header-height: 7.2rem
+  --layout-footer-height: 2.75rem
+  --color-page-background: #312D2A
+  --color-alt-page-background: color-mix(in srgb, #312D2A 82%, #E3D5CA)
+  --color-surface-background: #312D2A
+  --color-control-background: color-mix(in srgb, #312D2A 78%, #F4F4F4)
+  --color-text-primary: #FFFCFC
+  --color-text-secondary: color-mix(in srgb, #FFFCFC 72%, transparent)
+  --color-border-muted: #E3D5CA
+  --color-border-strong: #F4F4F4
+  --color-accent: #D95419
+  --color-text-on-accent: #FFFCFC
+  --color-feedback-danger: #D95419
+  --color-feedback-success: #E3D5CA
+  --color-stage-care-background: color-mix(in srgb, #312D2A 86%, #E3D5CA)
+  --color-stage-booking-background: color-mix(in srgb, #312D2A 80%, #F4F4F4)
+  --color-stage-faq-background: color-mix(in srgb, #312D2A 74%, #E3D5CA)
+  --color-text-shadow: rgb(0 0 0 / 0.84)
+  --effect-text-shadow-outline: -1px 0 var(--color-text-shadow), 0 1px var(--color-text-shadow), 1px 0 var(--color-text-shadow), 0 -1px var(--color-text-shadow)
+
+@media (max-width: 1024px)
+  :root
+    --layout-header-height: 6.4rem
+    --layout-footer-height: 2.6rem
+
+@media (max-width: 768px)
+  :root
+    --layout-header-height: 5.8rem
+    --layout-footer-height: 2.4rem
+
+:root[data-theme='light']
+  --color-page-background: #FFFCFC
+  --color-alt-page-background: #F4F4F4
+  --color-surface-background: #E3D5CA
+  --color-control-background: #F4F4F4
+  --color-text-primary: #312D2A
+  --color-text-secondary: color-mix(in srgb, #312D2A 72%, transparent)
+  --color-border-muted: #E3D5CA
+  --color-border-strong: #312D2A
+  --color-accent: #D95419
+  --color-text-on-accent: #FFFCFC
+  --color-feedback-danger: #D95419
+  --color-feedback-success: #312D2A
+  --color-stage-care-background: #E3D5CA
+  --color-stage-booking-background: #F4F4F4
+  --color-stage-faq-background: #FFFCFC
+  --color-text-shadow: rgb(49 45 42 / 0.35)
+  --effect-text-shadow-outline: -1px 0 var(--color-text-shadow), 0 1px var(--color-text-shadow), 1px 0 var(--color-text-shadow), 0 -1px var(--color-text-shadow)
+
+*
+  box-sizing: border-box
+
+html,
+body
+  margin: 0
+  min-height: 100%
+  scroll-behavior: smooth
+
+body
+  background: var(--color-page-background)
+  color: var(--color-text-primary)
+  font-family: 'Montserrat', 'Segoe UI', sans-serif
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6
+  margin-top: 1rem

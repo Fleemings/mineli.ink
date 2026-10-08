@@ -1,0 +1,76 @@
+.temporary-building
+  position: relative
+  height: 100vh
+  width: 100%
+  display: grid
+  place-items: center
+  overflow: hidden
+  padding: 1rem
+  background-image: url('../../assets/images/butterfly-logo-light.jpeg')
+  background-position: center
+  background-repeat: no-repeat
+  background-size: contain
+  background-color: var(--color-stage-faq-background)
+  background-blend-mode: multiply
+
+.temporary-building__language
+  position: absolute
+  top: clamp(1rem, 3vw, 1.75rem)
+  right: clamp(1rem, 3vw, 1.75rem)
+  z-index: 1
+
+.temporary-building__content
+  position: relative
+  z-index: 1
+  width: 100%
+  text-align: center
+  display: flex
+  flex-direction: column
+  align-items: center
+
+.temporary-building__title
+  margin: 0
+  max-width: 100%
+  font-size: clamp(2.2rem, 6vw, 4rem)
+  font-weight: 700
+  letter-spacing: 0.06em
+  line-height: 1.1
+  // scrambleText temporarily replaces spaces with non-space chars from its charset
+  // while animating, which would otherwise force this multi-word title onto one
+  // unbroken, overflowing line until the real spaces are revealed again.
+  overflow-wrap: anywhere
+  color: var(--color-text-on-accent)
+
+.temporary-building__subtitle
+  margin: 1rem 0 0
+  font-size: clamp(0.95rem, 2.2vw, 1.15rem)
+  letter-spacing: 0.03em
+  font-style: italic
+  font-weight: 500
+  color: var(--color-text-on-accent)
+
+.temporary-building__social-link
+  margin-top: 2rem
+  display: inline-flex
+  align-items: center
+  justify-content: center
+  width: 3rem
+  height: 3rem
+  border-radius: 999px
+  color: var(--color-text-on-accent)
+  background: color-mix(in srgb, var(--color-text-on-accent) 15%, transparent)
+  text-decoration: none
+  transition: transform 0.2s ease, background-color 0.2s ease
+
+.temporary-building__social-link:hover,
+.temporary-building__social-link:focus-visible
+  transform: scale(1.08)
+  background: color-mix(in srgb, var(--color-text-on-accent) 25%, transparent)
+
+.temporary-building__social-link:focus-visible
+  outline: 0.125rem solid var(--color-text-on-accent)
+  outline-offset: 0.2rem
+
+.temporary-building__social-icon
+  font-size: 1.5rem
+  line-height: 1

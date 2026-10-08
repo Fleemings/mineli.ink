@@ -1,0 +1,29 @@
+<app-temporary-building />
+<!--
+@if (isUnderConstruction) {
+  <app-temporary-building />
+} @else {
+  @defer (on immediate) {
+    <div class="app-root">
+      <app-header />
+      <main class="app-root__content">
+        <section id="landing" #pageSection class="app-root__section">
+          <app-landing-area />
+        </section>
+        <section id="flashes" #pageSection class="app-root__section">
+          <app-flashes />
+        </section>
+        <section id="booking" #pageSection class="app-root__section">
+          <app-booking />
+        </section>
+        <section id="faq" #pageSection class="app-root__section">
+          <app-faq />
+        </section>
+      </main>
+      <app-footer />
+    </div>
+  } @placeholder {
+    &lt;!&ndash; Intentionally empty: avoids a "temporary building" flash for the normal
+         (non-maintenance) case while the deferred chunk below loads. &ndash;&gt;
+  }
+}-->

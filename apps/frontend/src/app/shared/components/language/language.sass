@@ -1,0 +1,24 @@
+.language
+  display: inline-flex
+  align-items: center
+  border-radius: 1.5rem
+  overflow: hidden
+
+  .language__option
+    border: none
+    background: transparent
+    font-weight: 500
+    font-size: 0.8rem
+    padding: 0.2rem 0.2rem
+    color: var(--color-text)
+    cursor: pointer
+    transition: background-color 0.2s ease, color 0.2s ease
+
+  .language__option:focus-visible,
+  .language__option:active
+    outline: none
+    background-color: color-mix(in srgb, var(--color-accent) 20%, transparent)
+
+  .language__option--active
+    background-color: var(--color-accent)
+    color: var(--color-text-on-accent)

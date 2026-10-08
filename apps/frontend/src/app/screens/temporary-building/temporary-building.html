@@ -1,0 +1,24 @@
+<div class="temporary-building">
+  <div class="temporary-building__language">
+    <app-language />
+  </div>
+
+  <div class="temporary-building__content">
+    <h1 class="temporary-building__title" #title>
+      {{ 'temporaryBuilding.title' | translate }}
+    </h1>
+    <p class="temporary-building__subtitle">
+      {{ 'temporaryBuilding.subtitle' | translate }}
+    </p>
+
+    <a
+      class="temporary-building__social-link"
+      [href]="instagramUrl"
+      target="_blank"
+      rel="noopener noreferrer"
+      [attr.aria-label]="('temporaryBuilding.social.instagram' | translate) + ' (' + ('shared.opensInNewTab' | translate) + ')'"
+    >
+      <i class="bi bi-instagram temporary-building__social-icon" aria-hidden="true"></i>
+    </a>
+  </div>
+</div>
