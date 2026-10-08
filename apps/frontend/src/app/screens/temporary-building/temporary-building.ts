@@ -34,8 +34,6 @@ export class TemporaryBuilding implements AfterViewInit, OnDestroy {
     this.titleSplit?.revert();
   }
 
-  // Mirrors landing-area's title reveal (char fade/slide-in + scramble-text resolve),
-  // just slowed down slightly to suit a single, calmer placeholder screen.
   private playTitleAnimation(): void {
     const titleElement = this.title.nativeElement;
     const titleText = this.i18n.translate('temporaryBuilding.title');
